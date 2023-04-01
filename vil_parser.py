@@ -7,17 +7,14 @@ keyboards, but not with the regular ones.
 
 => Output example:
 
-Layout 0:
-KC_TAB     , KC_Q       , KC_W       , KC_E       , KC_R       , KC_T       ,
-KC_LCTRL   , KC_A       , KC_S       , KC_D       , KC_F       , KC_G       ,
-KC_LALT    , KC_Z       , KC_X       , KC_C       , KC_V       , KC_B       ,
-                                       KC_LGUI    , KC_LSHIFT  , FN_MO23    ,
+=> Layout 0:
 
-KC_Y       , KC_U       , KC_I       , KC_O       , KC_P       , KC_BSPACE  ,
-KC_H       , KC_J       , KC_K       , KC_L       , KC_SCOLON  , KC_QUOTE   ,
-KC_N       , KC_M       , KC_COMMA   , KC_DOT     , KC_SLASH   , KC_ENTER   ,
-FN_MO13    , KC_SPACE   , KC_ESCAPE  ,
-=====
+     KC_TAB,        KC_Q,        KC_W,        KC_E,        KC_R,        KC_T,         KC_Y,        KC_U,        KC_I,        KC_O,        KC_P,   KC_BSPACE,
+   KC_LCTRL,        KC_A,        KC_S,        KC_D,        KC_F,        KC_G,         KC_H,        KC_J,        KC_K,        KC_L,   KC_SCOLON,    KC_QUOTE,
+    KC_LALT,        KC_Z,        KC_X,        KC_C,        KC_V,        KC_B,         KC_N,        KC_M,    KC_COMMA,      KC_DOT,    KC_SLASH,    KC_ENTER,
+                                           KC_LGUI,   KC_LSHIFT,     FN_MO23,      FN_MO13,    KC_SPACE,   KC_ESCAPE
+
+-----
 
 Just copy the key codes and paste it into the 'LAYOUT_split_3x6_3()' macro.
 There may be some errors in the output. You will see it during compilation
