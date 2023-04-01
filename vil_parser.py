@@ -92,36 +92,41 @@ def print_keymap_for_c_code(keymap: VialKeymap) -> None:
     your keymap.c
     """
     max_keyname_length = get_max_length_of_keyname(keymap)
-    first_key_template = f"{{:<{max_keyname_length}}},"
+    first_key_template = f"{{:>{max_keyname_length}}},"
     key_template = f" {first_key_template}"
 
     for layout_index, layout in enumerate(keymap):
-        print(f"\nLayout {layout_index}:")
-        for row_index, row_keynames in enumerate(layout):
-            last_left_row_index = len(layout) // 2 - 1
-            # If it's rows of the right side of the keyboard, need to reverse
-            # the row as Vial saves right side rows backwards
-            if row_index > last_left_row_index:
-                row_keynames = row_keynames[::-1]
+
+        print(f"\n=> Layout {layout_index}:\n")
+        num_of_rows = len(layout) // 2
+
+        for row_index in range(num_of_rows):
+            left_row_keynames = layout[row_index]
+            # Right side row need to be reversed, as Vial saves them backwards
+            right_row_keynames = layout[row_index + num_of_rows][::-1]
 
             # Create template for row and fill it with keynames
-            number_of_keys = len(row_keynames)
-            row_template = \
-                f"{first_key_template}{key_template * (number_of_keys - 1)}"
-            row = row_template.format(*row_keynames)
+            row_template = (
+                f"{first_key_template}"
+                f"{key_template * (len(left_row_keynames) - 1)}"
+                "  "
+                f"{first_key_template}"
+                f"{key_template * (len(right_row_keynames) - 1)}"
+            )
+            row = row_template.format(*left_row_keynames, *right_row_keynames)
 
-            # If it's last row on the left side of the keyboard,
-            # it has less keys than the previous ones,
-            # so need to add more spaces on the left
-            if row_index == last_left_row_index:
-                length_difference = len(layout[row_index - 1]) - number_of_keys
+            # If it's last row of the keyboard, it has less keys than
+            # the previous ones, so adding more spaces on the left to align
+            if row_index + 1 == num_of_rows:
+                len_difference = \
+                    len(layout[row_index - 1]) - len(left_row_keynames)
                 shift_from_line_start = \
-                    " " * (max_keyname_length * length_difference
-                           + 2 * length_difference)
-                row = f"{shift_from_line_start}{row}\n"
+                    " " * (max_keyname_length * len_difference
+                           + 2 * len_difference)
+                row = f"{shift_from_line_start}{row[:-1]}\n"
 
             print(row)
-        print("=====")
+        print("-----")
 
 
 if __name__ == "__main__":
