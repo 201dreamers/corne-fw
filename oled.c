@@ -68,6 +68,20 @@ static void oled_render_hsv(void) {
 #endif
 
 
+#ifdef RGB_MATRIX_ENABLE
+static void oled_render_hsv(void) {
+    oled_write_P(PSTR("m:"), false);
+    oled_write(get_u8_str(rgb_matrix_get_mode(), ' '), false);
+    oled_write_P(PSTR("h:"), false);
+    oled_write(get_u8_str(rgb_matrix_get_hue(), ' '), false);
+    oled_write_P(PSTR("s:"), false);
+    oled_write(get_u8_str(rgb_matrix_get_sat(), ' '), false);
+    oled_write_P(PSTR("v:"), false);
+    oled_write_ln(get_u8_str(rgb_matrix_get_val(), ' '), false);
+}
+#endif
+
+
 static void oled_render_keymods(uint8_t led_usb_state) {
     bool is_caps_on = false;
     if (led_usb_state & (1 << USB_LED_CAPS_LOCK)) {
@@ -141,13 +155,12 @@ static void oled_render_slave_screen(void) {
     oled_render_separator();
     oled_render_space();
 
-#   ifdef RGBLIGHT_ENABLE
+#   if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
     oled_render_hsv();
-#   endif
-
-    oled_render_space();
+#   endif  // RGBLIGHT_ENABLE || RGB_MATRIX_ENABLE
 
 #   ifdef LUNA
+    oled_render_space();
     oled_render_luna_animation();
 #   endif  // LUNA
 }

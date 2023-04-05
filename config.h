@@ -60,24 +60,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   define RGBLIGHT_LIMIT_VAL 120
 #   define RGB_MATRIX_MAXIMUM_BRIGHTNESS 120
 
-#   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_OUT_IN
+#   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
 #   define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
 
 #   define RGB_MATRIX_KEYPRESSES
-#   define ENABLE_RGB_MATRIX_BREATHING
-#   define ENABLE_RGB_MATRIX_MULTISPLASH
 #   define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
-#   define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #   define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
-#   define ENABLE_RGB_MATRIX_TYPING_HEATMAP
+#   undef  ENABLE_RGB_MATRIX_MULTISPLASH
 #endif
 
+#define SPLIT_LAYER_STATE_ENABLE
+#define RGBLIGHT_LAYERS
 
+
+// Reducing size of firmware
 #define NO_MUSIC_MODE
 
 #define LAYER_STATE_8BIT
-#define SPLIT_LAYER_STATE_ENABLE
-#define RGBLIGHT_LAYERS
 
 #ifndef NO_DEBUG
     #define NO_DEBUG
@@ -86,6 +85,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
     #define NO_PRINT
 #endif // !NO_PRINT
+
+#ifndef LINK_TIME_OPTIMIZATION_ENABLE
+#   define NO_ACTION_FUNCTION
+#   define NO_ACTION_MACRO
+#endif
+
 
 // #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #define OLED_FONT_H "keyboards/crkbd/keymaps/vial/glcdfont.c"
