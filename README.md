@@ -24,25 +24,25 @@ Made for usage with  the [Vial](https://get.vial.today/) software
 - [Vial docs](https://get.vial.today/manual/) - how to install and use vial software.
 
 ## Displays:
-![Displays](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/displays.jpg)
+![Displays](./readme-stuff/displays.jpg)
 
 ## Keymap:
 
 ### Layer 0:
-![Layer 0](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/keymap_layer_0.png)
+![Layer 0](./readme-stuff/keymap_layer_0.png)
 ### Layer 1:
-![Layer 1](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/keymap_layer_1.png)
+![Layer 1](./readme-stuff/keymap_layer_1.png)
 ### Layer 2:
-![Layer 2](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/keymap_layer_2.png)
+![Layer 2](./readme-stuff/keymap_layer_2.png)
 ### Layer 3:
-![Layer 3](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/keymap_layer_3.png)
+![Layer 3](./readme-stuff/keymap_layer_3.png)
 
 ## How to install:
 TODO
 
 ## My general setup:
-![Full setup 1](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/full_setup_1.jpg)
-![Full setup 2](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/full_setup_2.jpg)
+![Full setup 1](./readme-stuff/full_setup_1.jpg)
+![Full setup 2](./readme-stuff/full_setup_2.jpg)
 
 #### Keyboard stands are just cardboard triangles
-![Keyboard stands](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/stands.jpg)
+![Keyboard stands](./readme-stuff/stands.jpg)
