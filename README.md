@@ -24,7 +24,7 @@ Made for usage with  the [Vial](https://get.vial.today/) software
 - [Vial docs](https://get.vial.today/manual/) - how to install and use vial software.
 
 ## Displays:
-![Displays in action](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/displays_in_action.mp4)
+![Displays](https://github.com/201dreamers/corne-fw/blob/main/readme-stuff/displays.jpg)
 
 ## Keymap:
 
