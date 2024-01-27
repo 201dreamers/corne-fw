@@ -30,11 +30,13 @@ from os import PathLike
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
 from itertools import chain
-from typing import Iterable
 
 
-VialLayout = Iterable[Iterable[str | int]]
-VialKeymap = Iterable[VialLayout]
+InvalidVialLayout = list[list[str | int]]
+InvalidVialKeymap = list[InvalidVialLayout]
+
+VialLayout = list[list[str]]
+VialKeymap = list[VialLayout]
 
 
 def parse_args() -> Namespace:
@@ -49,23 +51,46 @@ def parse_args() -> Namespace:
     return parser.parse_args()
 
 
-def get_keymap_from_vil_file(vil_file: PathLike) -> VialKeymap:
+def get_keymap_from_vil_file(vil_file: PathLike) -> InvalidVialKeymap:
     with open(vil_file, "r") as fobj:
         return json.load(fobj)["layout"]
 
 
-def remove_non_keyname_items(keymap: VialKeymap) -> VialKeymap:
+def remove_non_keyname_items(keymap: InvalidVialKeymap) -> VialKeymap:
     """Removes -1 from the keymap."""
     filtered_keymap = []
     for layout in keymap:
         filtered_keymap.append(
-            tuple(
-                tuple(filter(lambda x: x != -1, row))
-                for row in layout
-            )
+            [list(filter(lambda x: x != -1, row)) for row in layout]
         )
 
     return filtered_keymap
+
+
+def rename_keys_according_to_qmk_docs(keymap: VialKeymap) -> VialKeymap:
+    map_vial_to_qmk = {
+        "KC_LCTRL": "KC_LCTL",
+        "KC_LSHIFT": "KC_LSFT",
+        # "FN_MO13": "",
+        "KC_BSPACE": "KC_BSPC",
+        "KC_SCOLON": "KC_SCLN",
+        # "FN_MO23": "",
+        "KC_BSLASH": "KC_BSLS",
+        "KC_LBRACKET": "KC_LBRC",
+        "KC_RBRACKET": "KC_RBRC",
+        "KC_CAPSLOCK": "KC_CAPS",
+        "KC_PSCREEN": "KC_PSCR",
+        "KC_PGDOWN": "KC_PGDN",
+        "RESET": "QK_RBT",
+    }
+
+    for layout in keymap:
+        for row in layout:
+            for idx, key in enumerate(row):
+                for wrong_key, right_key in map_vial_to_qmk.items():
+                    if wrong_key in key:
+                        row[idx] = key.replace(wrong_key, right_key)
+    return keymap
 
 
 def get_max_length_of_keyname(keymap: VialKeymap) -> int:
@@ -136,5 +161,6 @@ if __name__ == "__main__":
 
     keymap = get_keymap_from_vil_file(vil_file)
     keymap = remove_non_keyname_items(keymap)
+    keymap = rename_keys_according_to_qmk_docs(keymap)
 
     print_keymap_for_c_code(keymap)
