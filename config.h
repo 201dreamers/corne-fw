@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 4
 #define TAPPING_TERM 180
-#define IGNORE_MOD_TAP_INTERRUPT
+// #define IGNORE_MOD_TAP_INTERRUPT
 
 //#define USE_MATRIX_I2C
 #ifdef KEYBOARD_crkbd_rev1_legacy
@@ -37,13 +37,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define EE_HANDS
 
 #define USE_SERIAL_PD2
+
+#undef INDICATE_LAYER_WITH_LIGHT
+
 #ifdef RGBLIGHT_ENABLE
 #    undef RGBLIGHT_ANIMATIONS
+
 #    undef RGBLED_NUM
 #    define RGBLED_NUM 54
+
 #    undef RGBLED_SPLIT
-#    define RGBLED_SPLIT \
-        { 27, 27 }
+#    define RGBLED_SPLIT { 27, 27 }
+
 #    define RGBLIGHT_LIMIT_VAL 120
 #    define RGBLIGHT_HUE_STEP  10
 #    define RGBLIGHT_SAT_STEP  17
@@ -54,19 +59,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGB_MATRIX_ENABLE
 #   undef RGBLED_NUM
 #   define RGBLED_NUM 54
+
 #   undef RGBLED_SPLIT
 #   define RGBLED_SPLIT { 27, 27 }
 #   define RGB_MATRIX_SPLIT { 27, 27 }
+
 #   define RGBLIGHT_LIMIT_VAL 120
 #   define RGB_MATRIX_MAXIMUM_BRIGHTNESS 120
 
-#   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
+#   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_NONE
 #   define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
 
 #   define RGB_MATRIX_KEYPRESSES
+
+#   define ENABLE_RGB_MATRIX_PIXEL_RAIN
+#   define ENABLE_RGB_MATRIX_BREATHING
+#   define ENABLE_RGB_MATRIX_MULTISPLASH
+#   define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #   define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
 #   define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
-#   undef  ENABLE_RGB_MATRIX_MULTISPLASH
+#   define ENABLE_RGB_MATRIX_RIVERFLOW
 #endif
 
 #define SPLIT_LAYER_STATE_ENABLE
@@ -93,4 +105,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 // #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
-#define OLED_FONT_H "keyboards/crkbd/keymaps/vial/glcdfont.c"
+#define OLED_FONT_H "keyboards/crkbd/keymaps/201dreamers/glcdfont.c"
