@@ -1,5 +1,5 @@
 BOOTLOADER             = qmk-dfu
-OLED_DRIVER            = SSD1306
+OLED_DRIVER            = ssd1306
 
 RGBLIGHT_ENABLE        = no # Enable WS2812 RGB underlight.
 LTO_ENABLE             = yes
@@ -9,7 +9,7 @@ VIAL_ENABLE            = yes     # Enable VIAL
 RGB_MATRIX_ENABLE      = yes
 EXTRAKEY_ENABLE        = yes
 MOUSEKEY_ENABLE        = yes
-OLED_ENABLE            = no
+OLED_ENABLE            = yes
 
 WPM_ENABLE             = no
 QMK_SETTINGS           = no

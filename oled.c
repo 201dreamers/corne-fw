@@ -83,10 +83,7 @@ static void oled_render_hsv(void) {
 
 
 static void oled_render_keymods(uint8_t led_usb_state) {
-    bool is_caps_on = false;
-    if (led_usb_state & (1 << USB_LED_CAPS_LOCK)) {
-        is_caps_on = true;
-    }
+    bool is_caps_on = host_keyboard_led_state().caps_lock;
     oled_write_ln_P(PSTR("<cap>"), is_caps_on);
 }
 
